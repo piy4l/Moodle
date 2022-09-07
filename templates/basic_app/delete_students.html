@@ -1,0 +1,20 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<h3>The Student you want to delete must already be present in the STUDENT Table</h3>
+{% if deleted_succesfully %}
+<h1><p>Successfully Deleted {{user_id}}</p></h1>
+{% elif error %}
+<h1><p>Could not Delete</p></h1>
+{% endif %}
+<form action="{% url 'basic_app:students_delete' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="user_id"><h2>User ID</h2></label>
+      <input type="text" class="form-control" name="user_id" placeholder="User ID(starts with T if Teacher & S if Student)">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Delete</button>
+</form>
+{% endblock content %}

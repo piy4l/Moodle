@@ -1,0 +1,32 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<h3>The Relation you want to delete must already be present in the STUDENT_COURSE_RELATION Table</h3>
+{% if deleted_succesfully %}
+<h3><p>{{user_id}} is no longer assigned to {{session_name}} {{course_id}}</p></h3>
+{% elif error %}
+<h3><p>Could not Delete the Relation</p></h3>
+{% endif %}
+<form action="{% url 'basic_app:student_course_relation_delete' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="user_id"><h2>User Id</h2></label>
+      <input type="text" class="form-control" name="user_id" placeholder="User Id(Starts with S)">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="session_name"><h2>Session Name</h2></label>
+      <input type="text" class="form-control" name="session_name" placeholder="Session Name">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="course_id"><h2>Course Id</h2></label>
+      <input type="text" class="form-control" name="course_id" placeholder="Course Id">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Delete</button>
+</form>
+{% endblock content %}

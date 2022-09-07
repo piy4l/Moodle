@@ -1,0 +1,35 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+{% if added_succesfully %}
+<h1><p>Successfully Added {{session_name}} {{ course_id }}</p></h1>
+{% elif error %}
+<h1><p>Could not Add the Course</p></h1>
+{% endif %}
+<form action="{% url 'basic_app:courses_add' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="course_id">Course ID</label>
+      <input type="text" class="form-control" name="course_id" placeholder="Course ID">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="session_name">Session Name</label>
+      <input type="text" class="form-control" name="session_name" placeholder="Session Name">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="course_title">Course Title</label>
+      <input type="text" class="form-control" name="course_title" placeholder="Course Title">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="credit_hour">Credit Hour</label>
+      <input type="text" class="form-control" name="credit_hour" placeholder="Credit Hour">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock content %}

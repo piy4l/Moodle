@@ -1,0 +1,12 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="jumbotron">
+  <div class="list-group">
+    <a href="{% url 'basic_app:teacher_view' %}" class="list-group-item list-group-item-action list-group-item-primary">View TEACHER Table</a>
+    <a href="{% url 'basic_app:teachers_add' %}" class="list-group-item list-group-item-action list-group-item-secondary">Add Row In TEACHER Table</a>
+    <a href="{% url 'basic_app:teachers_update' %}" class="list-group-item list-group-item-action list-group-item-danger">Update Row In TEACHER Table</a>
+    <a href="{% url 'basic_app:teachers_delete' %}" class="list-group-item list-group-item-action list-group-item-success">Delete Row From TEACHER Table</a>
+  </div>
+</div>
+{% endblock content %}

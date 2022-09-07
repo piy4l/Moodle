@@ -1,0 +1,16 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group col-md-6">
+    <label for="post_title">Post Title</label>
+    <input type="text" class="form-control" name="post_title" placeholder="Post Title">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="post_description">Post Description</label>
+    <textarea class="form-control" rows="10" cols="60" name="post_description" placeholder="Post Description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Post</button>
+</form>
+{% endblock content %}

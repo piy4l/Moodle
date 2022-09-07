@@ -1,0 +1,32 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<h1>The Teacher must be present in the TEACHER Table</h1>
+{% if updated_succesfully %}
+<h3><p>Successfully Updated {{user_id}}</p></h3>
+{% elif error %}
+<h3><p>Could not Update the Teacher</p></h3>
+{% endif %}
+<form action="{% url 'basic_app:teachers_update' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="user_id">User ID</label>
+      <input type="text" class="form-control" name="user_id" placeholder="User ID(starts with T)">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="designation">Designation</label>
+      <input type="text" class="form-control" name="designation" placeholder="Designation">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="room_number">Room Number</label>
+      <input type="number" class="form-control" name="room_number" placeholder="Room Number">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock content %}

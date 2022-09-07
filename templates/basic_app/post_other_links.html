@@ -1,0 +1,20 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<form action="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/post_other_links/" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="topic_name">Topic Name</label>
+      <input type="text" class="form-control" name="topic_name" placeholder="Topic Name">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="link_address">Http Link</label>
+      <input type="url" class="form-control" name="link_address" placeholder="Http Link">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Post</button>
+</form>
+{% endblock content %}

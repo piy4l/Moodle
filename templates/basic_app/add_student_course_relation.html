@@ -1,0 +1,33 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<h3>The Student you want to add must be present in the STUDENT Table</h3>
+<h3>The Course Id & Session Name must be present in the COURSE Table</h3>
+{% if added_succesfully %}
+<h5><p>Successfully Added {{user_id}} to {{session_name}} {{ course_id }}</p></h5>
+{% elif error %}
+<h5><p>Could not Add the Relation</p></h5>
+{% endif %}
+<form action="{% url 'basic_app:student_course_relation_add' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="user_id">User id</label>
+      <input type="text" class="form-control" name="user_id" placeholder="User Id(Starts with S)">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="course_id">Course ID</label>
+      <input type="text" class="form-control" name="course_id" placeholder="Course ID">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="session_name">Session Name</label>
+      <input type="text" class="form-control" name="session_name" placeholder="Session Name">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock content %}

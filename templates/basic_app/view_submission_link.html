@@ -1,0 +1,43 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+<div class="jumbotron">
+  <h3>{{session_name}} {{course_id}}</h3>
+  <h3>Week {{week_number}}</h3>
+  <br>
+  {% for submission_detail in submission_details %}
+  <div class="list-group">
+    <h4>{{link_title}}</h4>
+    <h4>{{submission_detail.description}}</h4>
+    <br>
+    <br>
+    <h5>Submission status: {{submission_status}}</h5>
+    <h5>Grading status: {{grading_status}}</h5>
+    <h5>Due date: {{submission_detail.due_date}}</h5>
+    {% if days >= 0 and hours >= 0 and minutes >= 0 %}
+      <h5>Time remaining: {{days}} days {{hours}} hours {{minutes}} minutes</h5>
+    {% else %}
+      <h5>Time remaining: Submission time is over!</h5>
+    {% endif %}
+    {% if file_uploaded %}
+      <h5>Last modified: {{last_modified}}</h5>
+      <h5>Submitted File: <a href="/{{file_path}}", download>{{file_name}}</a></h5>
+    {% endif %}
+    <br>
+    <form method="POST" action="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/view_submission_link/{{link_title}}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if file_uploaded and days >= 0 and hours >= 0 and minutes >= 0 %}
+      <div class="form-group">
+      <input type="file" class="form-control-file" name="filename">
+      </div>
+      <button type="submit" class="btn btn-primary">Edit Submission</button>
+      {% elif not file_uploaded and days >= 0 and hours >= 0 and minutes >= 0 %}
+      <div class="form-group">
+      <input type="file" class="form-control-file" name="filename">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Submission</button>
+      {% endif %}
+    </form>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

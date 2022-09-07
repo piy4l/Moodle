@@ -1,0 +1,20 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<table width="100%"  border="1">
+    <tr style="background-color:lightgray">
+        <th>COURSE_ID</th>
+        <th>SESSION_NAME</th>
+        <th>COURSE_TITLE</th>
+        <th>CREDIT_HOUR</th>
+    </tr>
+    {% for course in courses %}
+       <tr>
+           <td>{{course.course_id}}</td>
+           <td>{{course.session_name }}</td>
+           <td>{{course.course_title}}</td>
+           <td>{{course.credit_hour}}</td>
+       </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

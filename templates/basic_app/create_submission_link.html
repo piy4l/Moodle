@@ -1,0 +1,26 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<form action="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/create_submission_link/" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="link_title">Link Title</label>
+      <input type="text" class="form-control" name="link_title" placeholder="Link Title">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" name="description" placeholder="Description">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+  <label for="due_date">Due date</label>
+    <input class="form-control" type="datetime-local" name="due_date">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Link</button>
+</form>
+{% endblock content %}

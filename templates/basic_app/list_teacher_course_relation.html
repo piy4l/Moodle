@@ -1,0 +1,18 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<table width="100%"  border="1">
+    <tr style="background-color:lightgray">
+        <th>TEACHER_ID</th>
+        <th>SESSION_NAME</th>
+        <th>COURSE_ID</th>
+    </tr>
+    {% for relation in relations %}
+       <tr>
+           <td>{{relation.user_id}}</td>
+           <td>{{relation.session_name }}</td>
+           <td>{{relation.course_id}}</td>
+       </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

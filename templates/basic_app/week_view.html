@@ -1,0 +1,32 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+{% if is_teacher %}
+<a href="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/upload_files/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Upload Files</a>
+<a href="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/create_submission_link/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Create Submission Link</a>
+<a href="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/post_other_links/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Post Other Links</a>
+{% endif %}
+<p></p>
+<p></p>
+<h3>{{session_name}} {{course_id}}</h3>
+<h3>Week {{week_number}}</h3>
+<p></p>
+<h5>Lecture Materials:</h5>
+{% for file in files %}
+<div class="list-group">
+  <a href="/{{file.file_path}}" class="list-group-item list-group-item-action list-group-item-secondary" download>{{file.file_name}}</a>
+</div>
+{% endfor %}
+<p></p>
+<h5>Helpful Links:</h5>
+{% for link in links %}
+<div class="list-group">
+  <a href="{{link.link_address}}" class="list-group-item list-group-item-action list-group-item-secondary">{{link.topic_name}}</a>
+</div>
+{% endfor %}
+<p></p>
+<h5>Submission Links:</h5>
+{% for submission_link in submission_links %}
+<a href="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/view_submission_link/{{submission_link.link_title}}" class="list-group-item list-group-item-action list-group-item-secondary">{{submission_link.link_title}}</a>
+<p>{{submission_link.description}}</p>
+{% endfor %}
+{% endblock content %}

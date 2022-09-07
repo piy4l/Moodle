@@ -1,0 +1,12 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="list-group">
+  <a href="{% url 'basic_app:user_desc_choice'%}" class="list-group-item list-group-item-action list-group-item-primary">USER_DESCRIPTION Table</a>
+  <a href="{% url 'basic_app:student_choice'%}" class="list-group-item list-group-item-action list-group-item-secondary">STUDENT Table</a>
+  <a href="{% url 'basic_app:teacher_choice'%}" class="list-group-item list-group-item-action list-group-item-success">TEACHER Table</a>
+  <a href="{% url 'basic_app:course_choice'%}" class="list-group-item list-group-item-action list-group-item-danger">COURSE Table</a>
+  <a href="{% url 'basic_app:student_course_relation_choice'%}" class="list-group-item list-group-item-action list-group-item-warning">STUDENT_COURSE_RELATION Table</a>
+  <a href="{% url 'basic_app:teacher_course_relation_choice'%}" class="list-group-item list-group-item-action list-group-item-info">TEACHER_COURSE_RELATION Table</a>
+</div>
+{% endblock content %}

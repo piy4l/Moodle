@@ -1,0 +1,16 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+
+<div class="jumbotron">
+  <h1></h1>
+  <div class="list-group">
+    {% if is_teacher %}
+      <a target="_blank" class="btn btn-info pull-right" href="{% url 'basic_app:upload_file' %}">Upload File</a>
+    {% endif %}
+    {% for post in posts %}
+    <a href="#" class="list-group-item list-group-item-action list-group-item-primary"><h2>{{ post.post_title }} {{ post.post_detail }} </h2></a>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

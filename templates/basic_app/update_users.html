@@ -1,0 +1,40 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<h3>The row you want to update must already be present in the USER_DESCRIPTION Table</h3>
+{% if updated_succesfully %}
+<h1><p>Successfully Updated {{user_id}}</p></h1>
+{% elif error %}
+<h1><p>Could not Update</p></h1>
+{% endif %}
+<form action="{% url 'basic_app:user_desc_update' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="user_id">User ID</label>
+      <input type="text" class="form-control" name="user_id" placeholder="User ID(starts with T if Teacher & S if Student)">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" name="first_name" placeholder="First Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="last_name">Last Name</label>
+      <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="country">Country</label>
+      <input type="text" class="form-control" name="country" placeholder="Country">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="city">City</label>
+      <input type="text" class="form-control" name="city" placeholder="City">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock content %}

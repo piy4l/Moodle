@@ -1,0 +1,24 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<table width="100%"  border="1">
+    <tr style="background-color:lightgray">
+        <th>USER_ID</th>
+        <th>FIRST_NAME</th>
+        <th>LAST_NAME</th>
+        <th>COUNTRY</th>
+        <th>CITY</th>
+        <th>PROFILE_PIC</th>
+    </tr>
+    {% for user in user_description %}
+       <tr>
+           <td>{{user.user_id}}</td>
+           <td>{{user.first_name}}</td>
+           <td>{{user.last_name}}</td>
+           <td>{{user.country}}</td>
+           <td>{{user.city}}</td>
+           <td>{{user.profile_pic}}</td>
+       </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

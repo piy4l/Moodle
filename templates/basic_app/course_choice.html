@@ -1,0 +1,12 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="jumbotron">
+  <div class="list-group">
+    <a href="{% url 'basic_app:course_view' %}" class="list-group-item list-group-item-action list-group-item-primary">View COURSE Table</a>
+    <a href="{% url 'basic_app:courses_add' %}" class="list-group-item list-group-item-action list-group-item-secondary">Add Row In COURSE Table</a>
+    <a href="{% url 'basic_app:courses_update' %}" class="list-group-item list-group-item-action list-group-item-danger">Update Row In COURSE Table</a>
+    <a href="{% url 'basic_app:courses_delete' %}" class="list-group-item list-group-item-action list-group-item-success">Delete Row From COURSE Table</a>
+  </div>
+</div>
+{% endblock content %}

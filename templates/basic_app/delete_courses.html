@@ -1,0 +1,26 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<h3>The Course you want to delete must already be present in the COURSE Table</h3>
+{% if deleted_succesfully %}
+<h1><p>Successfully Deleted {{session_name}} {{course_id}}</p></h1>
+{% elif error %}
+<h1><p>Could not Delete</p></h1>
+{% endif %}
+<form action="{% url 'basic_app:courses_delete' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="session_name"><h2>Session Name</h2></label>
+      <input type="text" class="form-control" name="session_name" placeholder="Session Name">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="course_id"><h2>Course Id</h2></label>
+      <input type="text" class="form-control" name="course_id" placeholder="Course Id">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Delete</button>
+</form>
+{% endblock content %}

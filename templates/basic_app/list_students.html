@@ -1,0 +1,20 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<table width="100%"  border="1">
+    <tr style="background-color:lightgray">
+        <th>USER_ID</th>
+        <th>CURRENT_LEVEL</th>
+        <th>CURRENT_TERM</th>
+        <th>CGPA</th>
+    </tr>
+    {% for student in students %}
+       <tr>
+           <td>{{student.user_id}}</td>
+           <td>{{student.current_level}}</td>
+           <td>{{student.current_term}}</td>
+           <td>{{student.cgpa}}</td>
+       </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<table width="100%"  border="1">
+    <tr style="background-color:lightgray">
+        <th>USER_ID</th>
+        <th>DESIGNATION</th>
+        <th>ROOM_NUMBER</th>
+    </tr>
+    {% for teacher in teachers %}
+       <tr>
+           <td>{{teacher.user_id}}</td>
+           <td>{{teacher.designation}}</td>
+           <td>{{teacher.room_number}}</td>
+       </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

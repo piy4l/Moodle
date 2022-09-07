@@ -1,0 +1,24 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+{% if not_logged_in %}
+<h1>Invalid Username or Password. Try again</h1>
+{% else %}
+<h1>Please Login</h1>
+{% endif %}
+<form action="{% url 'basic_app:user_login' %}" method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="username">User ID</label>
+      <input type="text" class="form-control" name="username" placeholder="User ID(starts with S if Student & T if Teacher)">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Log in</button>
+</form>
+{% endblock content %}

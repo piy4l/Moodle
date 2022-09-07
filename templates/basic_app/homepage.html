@@ -1,0 +1,12 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="jumbotron">
+  <h3>Available Courses:</h3>
+  <div class="list-group">
+    {% for course in courses %}
+    <a href="http://localhost:8000/course_details/{{ course.session_name}}/{{ course.course_id }}/week_choice/" class="list-group-item list-group-item-action list-group-item-primary"><h2>{{ course.session_name }} {{ course.course_id }} {{ course.course_title }}</h2></a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

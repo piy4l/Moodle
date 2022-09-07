@@ -1,0 +1,15 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+<h3>{{session_name}} {{course_id}} News Forum </h3>
+<h4>(Lastest post first)</h4>
+<p></p>
+{% for post in posts %}
+<div class="jumbotron">
+  <h3 class="display-4">{{post.post_title}}</h3>
+  <p class="lead">Posted by : {{post.user_id}}</p>
+  <hr class="my-4">
+  <p>{{post.post_description}}</p>
+  <a class="btn btn-primary btn-lg" href="http://localhost:8000/course_details/{{post.post_id}}/comments/" role="button">Comments</a>
+</div>
+{% endfor %}
+{% endblock content %}

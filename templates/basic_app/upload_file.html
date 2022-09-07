@@ -1,0 +1,14 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+
+<form method="POST" action="http://localhost:8000/course_details/{{session_name}}/{{course_id}}/week_number/{{week_number}}/upload_files/" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+  <label for="filename">File input</label>
+  <input type="file" class="form-control-file" name="filename">
+  </div>
+  <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+
+{% endblock content %}
