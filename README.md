@@ -4,10 +4,10 @@ A student-teacher collaboration system made with :
 
 **Django** (BackEnd) 
 
-**Bootstrap** (FrontEnd)
+**Bootstrap, HTML, CSS** (FrontEnd)
 
 **Oracle** (Database)
 
 Inspired from: https://moodle.cse.buet.ac.bd
 
-Full demonstration youtube link in Bangla: https://www.youtube.com/watch?v=Rg363m0rTUs&t=442s 
+Full demonstration youtube link in Bangla: https://www.youtube.com/watch?v=Rg363m0rTUs&list=PLFlOs6fceUIz37uFDMrmQECdMqZQpI1VI&index=2 
